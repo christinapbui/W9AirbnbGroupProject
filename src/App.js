@@ -9,10 +9,14 @@ function App() {
     <Router>
       <Switch>
         <Route path="/add">
-          <AddExperience />
+          <div className="add">
+            <AddExperience />
+          </div>
         </Route>
         <Route path="/">
-          <ExperiencesList />
+          <div className="experience">
+            <ExperiencesList />
+          </div>
         </Route>
         {/* <Route path="/">
             <Home />
