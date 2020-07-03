@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import {
   Card,
   Button,
@@ -13,6 +14,7 @@ import {
 
 const ExperiencesList = () => {
   const [experiences, setExperiences] = useState([]);
+  const { eid } = useParams();
 
   useEffect(() => {
     async function fetchData() {
@@ -81,7 +83,7 @@ const Experience = ({ title, pictureUrl, country, duration, price }) => (
           variant="top"
           style={{ height: "18rem", objectFit: "cover" }}
           src={pictureUrl}
-          href="/ViewExpInfo"
+          href="/experience/"
           className="cardImg"
         />
       </div>

@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
-import Navbar from "react-bootstrap/Navbar";
-import Button from "react-bootstrap/Button";
+import { Form, Navbar, Button } from "react-bootstrap";
 
 const AddExperience = () => {
   const [title, setTitle] = useState("");
