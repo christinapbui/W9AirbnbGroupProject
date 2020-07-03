@@ -83,6 +83,15 @@ const AddExperience = () => {
           />
         </Form.Group>
 
+        <Form.Group controlId="city">
+          <Form.Label>City</Form.Label>
+          <Form.Control
+            type="text"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          />
+        </Form.Group>
+
         <Form.Group controlId="country">
           <Form.Label>Country</Form.Label>
           <Form.Control
