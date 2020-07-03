@@ -7,6 +7,13 @@ const AddExperience = () => {
   const [price, setPrice] = useState(0);
   const [duration, setDuration] = useState(0);
   const [pictureUrl, setPictureUrl] = useState("");
+  // the below are details you only see when you go to single experience page (viewExpInfo)
+  const [city, setCity] = useState("");
+  const [maxGroupSize, setMaxGroupSize] = useState(0);
+  const [language, setLanguage] = useState("");
+  const [description, setDescription] = useState("");
+  const [host, setHost] = useState("");
+  const [whatToBring, setWhatToBring] = useState("");
 
   const createExperience = async (e) => {
     e.preventDefault();
@@ -16,6 +23,12 @@ const AddExperience = () => {
       price,
       duration,
       pictureUrl,
+      city,
+      maxGroupSize,
+      language,
+      description,
+      host,
+      whatToBring,
     };
     // to send this, send a POST request to API
     const newExperience = await fetch("http://localhost:3000/experiences", {
@@ -23,13 +36,19 @@ const AddExperience = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(experienceData), 
+      body: JSON.stringify(experienceData),
     });
     setTitle("");
     setCountry("");
     setPrice(0);
     setDuration(0);
     setPictureUrl("");
+    setCity("");
+    setMaxGroupSize(0);
+    setLanguage("");
+    setDescription("");
+    setHost("");
+    setWhatToBring("");
   };
 
   return (
@@ -59,6 +78,15 @@ const AddExperience = () => {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="city">
+          <Form.Label>City</Form.Label>
+          <Form.Control
+            type="text"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
           />
         </Form.Group>
 

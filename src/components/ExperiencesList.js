@@ -69,14 +69,13 @@ const ExperiencesList = () => {
               <Experience {...e} /> // the "...e" is same as saying <Experience title={e.title} pictureUrl={e.pictureUrl}>
             ))}
           </Row>
-          
         </Container>
       </section>
     </div>
   );
 };
 
-const Experience = ({ title, pictureUrl, country, duration, price, }) => (
+const Experience = ({ title, pictureUrl, country, duration, price }) => (
   <Col>
     <Card style={{ width: "13rem", minHeight: "20rem", marginBottom: "10px" }}>
       <div className="imgBox">
@@ -84,7 +83,7 @@ const Experience = ({ title, pictureUrl, country, duration, price, }) => (
           variant="top"
           style={{ height: "18rem", objectFit: "cover" }}
           src={pictureUrl}
-          href='/experience/'
+          href="/experience/"
           className="cardImg"
         />
       </div>

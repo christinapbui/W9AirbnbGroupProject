@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Navbar, Container, Row, Col, Badge } from "react-bootstrap";
+import { Navbar, Container, Row, Col, Badge, Button } from "react-bootstrap";
 
 // this is to view an experience in detail
 const ViewExpInfo = () => {
@@ -36,33 +36,96 @@ const ViewExpInfo = () => {
   );
 };
 
-const Experience = ({ title, pictureUrl, country, duration, price }) => (
-  <section style={{ backgroundColor: "black", color: "white" }}>
-    <div className="container infoPage">
-      <Container>
+const Experience = ({
+  title,
+  pictureUrl,
+  country,
+  duration,
+  price,
+  city,
+  maxGroupSize,
+  language,
+  description,
+  host,
+  whatToBring,
+}) => (
+  <div>
+    <section style={{ backgroundColor: "black", color: "white" }}>
+      <div className="container infoPage">
+        <Container>
+          <Row sm="2" xs="1">
+            <Col md={4}>
+              <img
+                src={pictureUrl}
+                style={{ height: "18rem", objectFit: "cover" }}
+              />
+            </Col>
+            <Col md={8}>
+              <h4>Host: {host}</h4>
+              <h4>What you'll do</h4>
+              <p>Description: {description}</p>
+            </Col>
+          </Row>
+          <Row sm="2" xs="1" style={{ marginTop: "20px" }}>
+            <Col md={4}>
+              <div className="justify-content-center">
+                <Badge variant="light">&#9658; Online Experience</Badge>
+                <h2>{title}</h2>
+                <p style={{ color: "#777777" }}>
+                  <i class="fas fa-globe" style={{ paddingRight: "15px" }}></i>
+                  {city},{country}
+                </p>
+                <Badge variant="light">Starting from ${price} USD</Badge>
+              </div>
+            </Col>
+            <Col md={8}>
+              <p style={{ textAlign: "center" }}>
+                <i
+                  style={{ marginRight: "10px" }}
+                  class="fas fa-tablet-alt"
+                ></i>
+                Book and join this experience from your computer, phone, or
+                tablet.
+              </p>
+              <table className="infoTable" style={{ width: "100%" }}>
+                <tr style={{ color: "#777777" }}>
+                  <td>
+                    <i class="far fa-clock"></i>
+                  </td>
+                  <td>
+                    <i class="fas fa-user-friends"></i>
+                  </td>
+                  <td>
+                    <i class="far fa-comment"></i>
+                  </td>
+                </tr>
+                <tr style={{ color: "#777777" }}>
+                  <td>Duration:</td>
+                  <td>Max Group Size:</td>
+                  <td>Hosted Language:</td>
+                </tr>
+                <tr>
+                  <td>{duration} minutes</td>
+                  <td>{maxGroupSize}</td>
+                  <td>{language}</td>
+                </tr>
+              </table>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    </section>
+    <section className="container">
+      <Container style={{ marginTop: "30px" }}>
         <Row sm="2" xs="1">
-          <Col>
-            <img
-              src={pictureUrl}
-              style={{ maxHeight: "400px", objectFit: "cover" }}
-            />
+          <Col md={4}>
+            <h4>What to bring: {whatToBring}</h4>
           </Col>
-          <Col>Test Text</Col>
-        </Row>
-        <Row sm="2" xs="1">
-          <Col className="justify-content-center">
-            <Badge variant="light">Online Experience</Badge>{" "}
-            <h2>{title}</h2>
-          </Col>
-          <Col>Text 2</Col>
+          <Col md={8}>{whatToBring}</Col>
         </Row>
       </Container>
-
-      <h3>{country}</h3>
-      <h4>Starting from ${price} USD</h4>
-      <h4>{duration} minutes</h4>
-    </div>
-  </section>
+    </section>
+  </div>
 );
 
 export default ViewExpInfo;

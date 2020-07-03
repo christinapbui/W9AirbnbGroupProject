@@ -74,5 +74,9 @@ div .card-body{
 
 .infoPage{
   padding: 20px;
-  
+  padding-top: 40px;
+}
+
+.infoTable{
+  text-align: center;
 }
