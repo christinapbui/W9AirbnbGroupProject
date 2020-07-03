@@ -10,10 +10,14 @@ function App() {
     <Router>
       <Switch>
         <Route path="/add">
-          <AddExperience />
+          <div className="add">
+            <AddExperience />
+          </div>
         </Route>
-        <Route path="/" exact>
-          <ExperiencesList />
+        <Route path="/">
+          <div className="experience">
+            <ExperiencesList />
+          </div>
         </Route>
         <Route path="/experience/:eid">
           <ViewExpInfo />

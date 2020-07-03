@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import Form from "react-bootstrap/Form";
+import Navbar from "react-bootstrap/Navbar";
+import Button from "react-bootstrap/Button";
 
 const AddExperience = () => {
   const [title, setTitle] = useState("");
@@ -22,7 +25,7 @@ const AddExperience = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(experienceData), // have to pass JSON string, not JSON object
+      body: JSON.stringify(experienceData), 
     });
     setTitle("");
     setCountry("");
@@ -33,54 +36,75 @@ const AddExperience = () => {
 
   return (
     <div>
-      <h1>Create a New Experience</h1>
-      <form onSubmit={createExperience}>
-        <label htmlFor="title">Title</label>
-        <input
-          type="text"
-          name="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <br />
+      <Navbar bg="white" variant="light" className="navbar">
+        <div className="container">
+          <Navbar.Brand href="/">
+            <img
+              alt=""
+              src="/logo.png"
+              width="30"
+              height="auto"
+              className="d-inline-block align-center"
+            />{" "}
+            <span style={{ paddingLeft: "10px" }}>Online Experiences</span>
+          </Navbar.Brand>
+        </div>
+      </Navbar>
+      <div style={{ height: "50px" }}></div>
+      <br />
+      <h3>Create a New Experience</h3>
+      <hr />
+      <Form className="container inputForm" onSubmit={createExperience}>
+        <Form.Group controlId="title">
+          <Form.Label>Title</Form.Label>
+          <Form.Control
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </Form.Group>
 
-        <label htmlFor="country">Country</label>
-        <input
-          type="text"
-          name="country"
-          value={country}
-          onChange={(e) => setCountry(e.target.value)}
-        />
-        <br />
+        <Form.Group controlId="country">
+          <Form.Label>Country</Form.Label>
+          <Form.Control
+            type="text"
+            value={country}
+            onChange={(e) => setCountry(e.target.value)}
+          />
+        </Form.Group>
 
-        <label htmlFor="price">price</label>
-        <input
-          type="number"
-          name="price"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        />
-        <br />
+        <Form.Group controlId="price">
+          <Form.Label>Price</Form.Label>
+          <Form.Control
+            type="number"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
+        </Form.Group>
 
-        <label htmlFor="duration">Duration</label>
-        <input
-          type="number"
-          name="duration"
-          value={duration}
-          onChange={(e) => setDuration(e.target.value)}
-        />
-        <br />
+        <Form.Group controlId="duration">
+          <Form.Label>Duration</Form.Label>
+          <Form.Control
+            type="number"
+            value={duration}
+            onChange={(e) => setDuration(e.target.value)}
+          />
+          <Form.Text className="text-muted">Enter duration in hours</Form.Text>
+        </Form.Group>
 
-        <label htmlFor="pictureUrl">Picture URL</label>
-        <input
-          type="text"
-          name="pictureUrl"
-          value={pictureUrl}
-          onChange={(e) => setPictureUrl(e.target.value)}
-        />
-        <br />
-        <button type="submit">Submit</button>
-      </form>
+        <Form.Group controlId="pictureUrl">
+          <Form.Label>Picture URL</Form.Label>
+          <Form.Control
+            type="text"
+            value={pictureUrl}
+            onChange={(e) => setPictureUrl(e.target.value)}
+          />
+        </Form.Group>
+
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
     </div>
   );
 };

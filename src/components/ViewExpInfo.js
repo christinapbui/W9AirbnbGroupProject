@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+// this is to view an experience in detail
 const ViewExpInfo = () => {
   const [expInfo, setExpInfo] = useState(null);
   const { eid } = useParams();

@@ -1,38 +1,67 @@
-.App {
+.experience{
+  background-color: white;
+}
+
+.add{
+  background-color:white;
+  height: 100vh;
+}
+
+.add h3{
+  padding-top: 20px;
   text-align: center;
+  padding-bottom: 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.inputForm{
+  max-width: 800px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navbar{
+    position: fixed;
+    width: 100vw;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.02);
+    z-index: 100;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.jumbo{
+  background-image: url("https://www.incimages.com/uploaded_files/image/1920x1080/GettyImages-165230118-web1_59300.jpg");
+  height: 500px; 
+  background-position: top; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.cardImg:hover{
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+p .cardText{ 
+  margin: 0;
+}
+
+.card{
+  border: none;
+}
+
+div .card-body{
+  padding: 8px;
+}
+
+.imgBox { 
+  border-radius: calc(1rem - 1px);
+  display: inline-block; 
+  overflow: hidden; 
+}
+.imgBox img {
+  display: block; 
+  transition: .4s ease-in-out;
+}
+.imgBox:hover img {
+  transform: scale(1.1);
+}
+
+.card-img-top{
+  border-radius: calc(1rem - 1px);
 }
