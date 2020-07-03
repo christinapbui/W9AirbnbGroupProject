@@ -22,13 +22,19 @@ const ViewExpInfo = () => {
   );
 };
 
-const Experience = ({ title, pictureUrl, country, duration, price }) => (
+const Experience = ({ title, pictureUrl, country, duration, price, city, maxGroupSize, language, description, host, whatToBring }) => (
   <div>
     <h2>{title}</h2>
-    <img src={pictureUrl} alt="adsdasdsad" />
-    <h3>{country}</h3>
+    <img src={pictureUrl} alt="this describes the experience" />
+    <h2>Host: {host}</h2>
+    <h3>{city},{country}</h3>
     <h4>Starting from ${price} USD</h4>
     <h4>{duration} minutes</h4>
+    <h4>Maximum group size: {maxGroupSize}</h4>
+    <h4>Language: {language}</h4>
+    <h4>Description: {description}</h4>
+    <h4>What to bring: {whatToBring}</h4>
+
   </div>
 );
 
