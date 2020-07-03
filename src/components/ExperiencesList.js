@@ -16,8 +16,7 @@ const ExperiencesList = () => {
 
   useEffect(() => {
     async function fetchData() {
-      // here we will get data from backend
-      const data = await fetch("http://localhost:3000/experiences"); // fetching from our own API
+      const data = await fetch("http://localhost:3000/experiences");
       const experiences = await data.json();
       setExperiences(experiences);
     }

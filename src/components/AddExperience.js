@@ -25,7 +25,7 @@ const AddExperience = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(experienceData), // have to pass JSON string, not JSON object
+      body: JSON.stringify(experienceData), 
     });
     setTitle("");
     setCountry("");
