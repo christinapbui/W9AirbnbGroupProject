@@ -5,10 +5,9 @@ const ExperiencesList = () => {
 
   useEffect(() => {
     async function fetchData() {
-      // here we will get data from backend
-      const data = await fetch("http://localhost:3000/experiences"); // fetching from our own API
+      const data = await fetch("http://localhost:3000/experiences");
       const experiences = await data.json();
-      setExperiences(experiences.data);
+      setExperiences(experiences);
     }
     fetchData();
   }, []); // the empty array makes it run only once (otherwise it will continue to GET on backend)
@@ -26,7 +25,7 @@ const ExperiencesList = () => {
 const Experience = ({ title, pictureUrl, country, duration, price }) => (
   <div>
     <h2>{title}</h2>
-    <img src={pictureUrl} alt="adsdasdsad" />
+    <img src={pictureUrl} alt="accompanying experience" />
     <h3>{country}</h3>
     <h4>Starting from ${price} USD</h4>
     <h4>{duration} minutes</h4>

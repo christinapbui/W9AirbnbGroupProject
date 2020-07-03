@@ -19,7 +19,7 @@ const AddExperience = () => {
     // to send this, send a POST request to API
     const newExperience = await fetch("http://localhost:3000/experiences", {
       method: "POST",
-      header: {
+      headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(experienceData), // have to pass JSON string, not JSON object
