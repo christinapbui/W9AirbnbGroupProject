@@ -33,7 +33,7 @@ const AddExperience = () => {
       whatToBring,
     };
     // to send this, send a POST request to API
-    const newExperience = await fetch("http://localhost:3000/experiences", {
+    const newExperience = await fetch("http://localhost:5000/experiences", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -55,86 +55,86 @@ const AddExperience = () => {
 
   return (
     <div>
-      <Navbar bg="white" variant="light" className="navbar">
-        <div className="container">
-          <Navbar.Brand href="/">
-            <img
-              alt=""
-              src="/logo.png"
-              width="30"
-              height="auto"
-              className="d-inline-block align-center"
-            />{" "}
-            <span style={{ paddingLeft: "10px" }}>Online Experiences</span>
-          </Navbar.Brand>
-        </div>
-      </Navbar>
-      <div style={{ height: "50px" }}></div>
-      <br />
-      <h3>Create a New Experience</h3>
-      <hr />
-      <Form className="container inputForm" onSubmit={createExperience}>
-        <Form.Group controlId="title">
-          <Form.Label>Title</Form.Label>
-          <Form.Control
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </Form.Group>
+    <Navbar bg="white" variant="light" className="navbar">
+      <div className="container">
+        <Navbar.Brand href="/">
+          <img
+            alt=""
+            src="/logo.png"
+            width="30"
+            height="auto"
+            className="d-inline-block align-center"
+          />{" "}
+          <span style={{ paddingLeft: "10px" }}>Online Experiences</span>
+        </Navbar.Brand>
+      </div>
+    </Navbar>
+    <div style={{ height: "50px" }}></div>
+    <br />
+    <h3>Create a New Experience</h3>
+    <hr />
+    <Form className="container inputForm" onSubmit={createExperience}>
+      <Form.Group controlId="title">
+        <Form.Label>Title</Form.Label>
+        <Form.Control
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </Form.Group>
 
-        <Form.Group controlId="city">
-          <Form.Label>City</Form.Label>
-          <Form.Control
-            type="text"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-          />
-        </Form.Group>
+      <Form.Group controlId="city">
+        <Form.Label>City</Form.Label>
+        <Form.Control
+          type="text"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
+      </Form.Group>
 
-        <Form.Group controlId="country">
-          <Form.Label>Country</Form.Label>
-          <Form.Control
-            type="text"
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
-          />
-        </Form.Group>
+      <Form.Group controlId="country">
+        <Form.Label>Country</Form.Label>
+        <Form.Control
+          type="text"
+          value={country}
+          onChange={(e) => setCountry(e.target.value)}
+        />
+      </Form.Group>
 
-        <Form.Group controlId="price">
-          <Form.Label>Price</Form.Label>
-          <Form.Control
-            type="number"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-          />
-        </Form.Group>
+      <Form.Group controlId="price">
+        <Form.Label>Price</Form.Label>
+        <Form.Control
+          type="number"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+        />
+      </Form.Group>
 
-        <Form.Group controlId="duration">
-          <Form.Label>Duration</Form.Label>
-          <Form.Control
-            type="number"
-            value={duration}
-            onChange={(e) => setDuration(e.target.value)}
-          />
-          <Form.Text className="text-muted">Enter duration in hours</Form.Text>
-        </Form.Group>
+      <Form.Group controlId="duration">
+        <Form.Label>Duration</Form.Label>
+        <Form.Control
+          type="number"
+          value={duration}
+          onChange={(e) => setDuration(e.target.value)}
+        />
+        <Form.Text className="text-muted">Enter duration in hours</Form.Text>
+      </Form.Group>
 
-        <Form.Group controlId="pictureUrl">
-          <Form.Label>Picture URL</Form.Label>
-          <Form.Control
-            type="text"
-            value={pictureUrl}
-            onChange={(e) => setPictureUrl(e.target.value)}
-          />
-        </Form.Group>
+      <Form.Group controlId="pictureUrl">
+        <Form.Label>Picture URL</Form.Label>
+        <Form.Control
+          type="text"
+          value={pictureUrl}
+          onChange={(e) => setPictureUrl(e.target.value)}
+        />
+      </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
-    </div>
-  );
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
+  </div>
+);
 };
 
 export default AddExperience;

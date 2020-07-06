@@ -16,9 +16,10 @@ const ExperiencesList = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const data = await fetch("http://localhost:3000/experiences");
+      const data = await fetch("http://localhost:5000/experiences?page=1&limit=10");
       const experiences = await data.json();
-      setExperiences(experiences);
+      console.log(experiences)
+      setExperiences(experiences.data);
     }
     fetchData();
   }, []); // the empty array makes it run only once (otherwise it will continue to GET on backend)
