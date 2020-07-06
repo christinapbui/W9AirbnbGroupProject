@@ -20,11 +20,12 @@ const ExperiencesList = () => {
     async function fetchData() {
       const data = await fetch("http://localhost:3000/experiences");
       const experiences = await data.json();
-      setExperiences(experiences);
+      setExperiences(experiences.data);
+      console.log(experiences)
     }
     fetchData();
   }, []); // the empty array makes it run only once (otherwise it will continue to GET on backend)
-
+  console.log(experiences);
   return (
     <div>
       <nav id="navigation">
@@ -75,17 +76,18 @@ const ExperiencesList = () => {
   );
 };
 
-const Experience = ({ title, pictureUrl, country, duration, price }) => (
+const Experience = ({ title, pictureUrl, country, duration, price, _id }) => (
   <Col>
     <Card style={{ width: "13rem", minHeight: "20rem", marginBottom: "10px" }}>
       <div className="imgBox">
-        <Card.Img
-          variant="top"
-          style={{ height: "18rem", objectFit: "cover" }}
-          src={pictureUrl}
-          href="/experience/"
-          className="cardImg"
-        />
+        <a href={`/experience/${_id}`}>
+          <Card.Img
+            variant="top"
+            style={{ height: "18rem", objectFit: "cover" }}
+            src={pictureUrl}
+            className="cardImg"
+          />
+        </a>
       </div>
       <Card.Body style={{ borderStyle: "none" }}>
         <Card.Title>{title}</Card.Title>
