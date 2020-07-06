@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
-import Navbar from "react-bootstrap/Navbar";
-import Button from "react-bootstrap/Button";
+import { Form, Navbar, Button } from "react-bootstrap";
 
 const AddExperience = () => {
   const [title, setTitle] = useState("");
@@ -16,6 +14,7 @@ const AddExperience = () => {
   const [description, setDescription] = useState("");
   const [host, setHost] = useState("");
   const [whatToBring, setWhatToBring] = useState("");
+  const [tags, setTags] = useState("");
 
   const createExperience = async (e) => {
     e.preventDefault();
@@ -31,6 +30,7 @@ const AddExperience = () => {
       description,
       host,
       whatToBring,
+      tags,
     };
     // to send this, send a POST request to API
     const newExperience = await fetch("http://localhost:5000/experiences", {
@@ -40,6 +40,7 @@ const AddExperience = () => {
       },
       body: JSON.stringify(experienceData),
     });
+    alert("Your Event Has Been Added")
     setTitle("");
     setCountry("");
     setPrice(0);
@@ -83,14 +84,52 @@ const AddExperience = () => {
         />
       </Form.Group>
 
-      <Form.Group controlId="city">
-        <Form.Label>City</Form.Label>
-        <Form.Control
-          type="text"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-        />
-      </Form.Group>
+        <Form.Group controlId="description">
+          <Form.Label>Description</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows="3"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </Form.Group>
+        
+        <Form.Group controlId="whatToBring">
+          <Form.Label>What to Bring:</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows="3"
+            value={whatToBring}
+            onChange={(e) => setWhatToBring(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="host">
+          <Form.Label>Host Name</Form.Label>
+          <Form.Control
+            type="text"
+            value={host}
+            onChange={(e) => setHost(e.target.value)}
+          />
+        </Form.Group>
+        
+        <Form.Group controlId="spokenLanguage">
+          <Form.Label>Spoken Language</Form.Label>
+          <Form.Control
+            type="text"
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="city">
+          <Form.Label>City</Form.Label>
+          <Form.Control
+            type="text"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          />
+        </Form.Group>
 
       <Form.Group controlId="country">
         <Form.Label>Country</Form.Label>
@@ -129,12 +168,31 @@ const AddExperience = () => {
         />
       </Form.Group>
 
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
-  </div>
-);
+        <Form.Group controlId="maxGroupSize">
+          <Form.Label>Max Group Size</Form.Label>
+          <Form.Control
+            type="number"
+            value={maxGroupSize}
+            onChange={(e) => setMaxGroupSize(e.target.value)}
+          />
+        </Form.Group>
+
+
+        <Form.Group controlId="tags">
+          <Form.Label>Tags</Form.Label>
+          <Form.Control
+            type="text"
+            value={tags}
+            onChange={(e) => setTags(e.target.value)}
+          />
+        </Form.Group>
+        
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
+    </div>
+  );
 };
 
 export default AddExperience;
