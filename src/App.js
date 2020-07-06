@@ -14,7 +14,7 @@ function App() {
             <AddExperience />
           </div>
         </Route>
-        <Route path="/">
+        <Route path="/" exact>
           <div className="experience">
             <ExperiencesList />
           </div>
