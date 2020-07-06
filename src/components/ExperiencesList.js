@@ -11,21 +11,34 @@ import {
   FormControl,
   Jumbotron,
 } from "react-bootstrap";
+import PaginationLink from "./PaginationLink"
 
 const ExperiencesList = () => {
   const [experiences, setExperiences] = useState([]);
+  const [pageNum, setPageNum] = useState(1);
+  const [maxPageNum, setMaxPageNum] = useState(1)
   const { eid } = useParams();
 
   useEffect(() => {
     async function fetchData() {
-      const data = await fetch("http://localhost:5000/experiences?page=1&limit=10");
-      const experiences = await data.json();
-      setExperiences(experiences.data);
-      console.log(experiences)
+      const data = await fetch(
+        `http://localhost:3000/experiences?page=${pageNum}`
+      );
+      const resp = await data.json();
+      setExperiences(resp.data);
+      setMaxPageNum(parseInt(resp.maxPageNum))
     }
     fetchData();
-  }, []); // the empty array makes it run only once (otherwise it will continue to GET on backend)
-  console.log(experiences);
+  }, [pageNum]); // the empty array [] makes it run only once (otherwise it will continue to GET on backend)
+
+  const goNextPage = () => {
+    setPageNum(pageNum + 1);
+  };
+
+  const goPrevPage = () => {
+    setPageNum(pageNum - 1);
+  };
+
   return (
     <div>
       <nav id="navigation">
@@ -64,13 +77,19 @@ const ExperiencesList = () => {
         <h1 style={{ padding: "10px", paddingTop: "30px" }}>
           Experiences List
         </h1>
+
         <Container>
           <Row md="3" lg="4" sm="2" xs="1">
             {experiences.map((e) => (
-              <Experience {...e} /> // the "...e" is same as saying <Experience title={e.title} pictureUrl={e.pictureUrl}>
+              <Experience {...e} />
             ))}
           </Row>
         </Container>
+        <PaginationLink disabled={pageNum === 1} handleClick={goPrevPage}>
+          Previous Page</PaginationLink>
+        <PaginationLink disabled={pageNum === maxPageNum} handleClick={goNextPage}>
+          Next Page
+        </PaginationLink>
       </section>
     </div>
   );

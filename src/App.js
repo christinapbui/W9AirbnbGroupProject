@@ -41,6 +41,7 @@ function App() {
             <AddExperience />
           </div>
         </Route>
+
         <Route path="/experience/:eid">
           <ViewExpInfo />
         </Route>
