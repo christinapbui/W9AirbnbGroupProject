@@ -33,7 +33,7 @@ const AddExperience = () => {
       tags,
     };
     // to send this, send a POST request to API
-    const newExperience = await fetch("http://localhost:3000/experiences", {
+    const newExperience = await fetch("http://localhost:5000/experiences", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

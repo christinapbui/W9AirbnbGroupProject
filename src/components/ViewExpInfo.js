@@ -8,7 +8,7 @@ const ViewExpInfo = () => {
   const { eid } = useParams();
   useEffect(() => {
     async function fetchData() {
-      const data = await fetch("http://localhost:3000/experiences/" + eid);
+      const data = await fetch("http://localhost:5000/experiences/" + eid);
       const expInfo = await data.json();
       setExpInfo(expInfo);
     }

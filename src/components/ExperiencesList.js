@@ -28,7 +28,7 @@ const ExperiencesList = () => {
   useEffect(() => {
     async function fetchData() {
       const data = await fetch(
-        `http://localhost:3000/experiences?page=${pageNum}&minPrice=${minPrice}&maxPrice=${maxPrice}`
+        `http://localhost:5000/experiences?page=${pageNum}&minPrice=${minPrice}&maxPrice=${maxPrice}`
       );
       const resp = await data.json();
       setExperiences(resp.data);
