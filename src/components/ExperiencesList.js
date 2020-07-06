@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import {
   Card,
   Button,
@@ -16,6 +17,7 @@ const ExperiencesList = () => {
   const [experiences, setExperiences] = useState([]);
   const [pageNum, setPageNum] = useState(1);
   const [maxPageNum, setMaxPageNum] = useState(1)
+  const { eid } = useParams();
 
   useEffect(() => {
     async function fetchData() {
@@ -93,17 +95,18 @@ const ExperiencesList = () => {
   );
 };
 
-const Experience = ({ title, pictureUrl, country, duration, price }) => (
+const Experience = ({ title, pictureUrl, country, duration, price, _id }) => (
   <Col>
     <Card style={{ width: "13rem", minHeight: "20rem", marginBottom: "10px" }}>
       <div className="imgBox">
-        <Card.Img
-          variant="top"
-          style={{ height: "18rem", objectFit: "cover" }}
-          src={pictureUrl}
-          href="/ViewExpInfo"
-          className="cardImg"
-        />
+        <a href={`/experience/${_id}`}>
+          <Card.Img
+            variant="top"
+            style={{ height: "18rem", objectFit: "cover" }}
+            src={pictureUrl}
+            className="cardImg"
+          />
+        </a>
       </div>
       <Card.Body style={{ borderStyle: "none" }}>
         <Card.Title>{title}</Card.Title>

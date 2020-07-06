@@ -14,13 +14,14 @@ function App() {
             <AddExperience />
           </div>
         </Route>
+
+        <Route path="/experience/:eid">
+          <ViewExpInfo />
+        </Route>
         <Route path="/" exact>
           <div className="experience">
             <ExperiencesList />
           </div>
-        </Route>
-        <Route path="/experience/:eid">
-          <ViewExpInfo />
         </Route>
       </Switch>
     </Router>
