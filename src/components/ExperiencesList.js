@@ -92,7 +92,7 @@ const ExperiencesList = () => {
         </Container>
       </Jumbotron>
       <div className="container priceFilter">
-        <table style={{ margin: "auto", width: "100%", maxWidth: "800px" }}>
+        <table style={{ margin: "auto", width: "100%", maxWidth: "600px" }}>
           <tr>
             <td colSpan="2">
               <h3>Price Filter</h3>
