@@ -11,19 +11,19 @@ import {
   FormControl,
   Jumbotron,
 } from "react-bootstrap";
-import PaginationLink from "./PaginationLink"
-import Rheostat from "rheostat"
+import PaginationLink from "./PaginationLink";
+import Rheostat from "rheostat";
 
 const ExperiencesList = () => {
   const [experiences, setExperiences] = useState([]);
   const [pageNum, setPageNum] = useState(1);
-  const [maxPageNum, setMaxPageNum] = useState(1)
+  const [maxPageNum, setMaxPageNum] = useState(1);
   const { eid } = useParams();
-  const [minPrice, setMinPrice] = useState(1)
-  const [maxPrice, setMaxPrice] = useState(1000)
-  const [tempMinPrice, setTempMinPrice] = useState(1)
-  const [tempMaxPrice, setTempMaxPrice] = useState(1000)
-  // const [isDragging, setIsDragging] = useState(false) // this will be boolean
+  const [minPrice, setMinPrice] = useState(1);
+  const [maxPrice, setMaxPrice] = useState(1000);
+  const [tempMinPrice, setTempMinPrice] = useState(1);
+  const [tempMaxPrice, setTempMaxPrice] = useState(1000);
+  const [isDragging, setIsDragging] = useState(false) // this will be boolean
 
   useEffect(() => {
     async function fetchData() {
@@ -32,7 +32,7 @@ const ExperiencesList = () => {
       );
       const resp = await data.json();
       setExperiences(resp.data);
-      setMaxPageNum(parseInt(resp.maxPageNum))
+      setMaxPageNum(parseInt(resp.maxPageNum));
     }
     fetchData();
   }, [pageNum, minPrice, maxPrice]); // the empty array [] makes it run only once (otherwise it will continue to GET on backend)
@@ -46,14 +46,16 @@ const ExperiencesList = () => {
   };
 
   const handleChange = (e) => {
-    setMinPrice(e.values[0])
-    setMaxPrice(e.values[1])
-  }
+    setMinPrice(e.values[0]);
+    setMaxPrice(e.values[1]);
+    setPageNum(1);
+    setIsDragging(false)
+  };
 
   const handleValuesUpdated = (e) => {
-    setTempMinPrice(e.values[0])
-    setTempMaxPrice(e.values[1])
-  }
+    setTempMinPrice(e.values[0]);
+    setTempMaxPrice(e.values[1]);
+  };
 
   return (
     <div>
@@ -82,35 +84,93 @@ const ExperiencesList = () => {
       <div style={{ height: "50px" }}></div>
       <Jumbotron fluid className="jumbo">
         <Container style={{ marginTop: "10rem" }}>
-          <h1>Online Experiences</h1>
-          <p style={{ width: "30rem" }}>
-            Unique activities to do from home, including cooking experiences
-            with world-renowned chefs
-          </p>
+          <div style={{ textShadow: "1px 1px 1px rgba(0, 0, 0, 0.5)" }}>
+            <h1>Online Experiences</h1>
+            <p style={{ maxWidth: "30rem" }}>
+              Unique activities to do from home, including cooking experiences
+              with world-renowned chefs
+            </p>
+          </div>
         </Container>
       </Jumbotron>
-      <div>
-        <Rheostat min={1} max={1000} value={[minPrice, maxPrice]} onChange={handleChange} onValuesUpdated={handleValuesUpdated} />
-        <input type="text" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} />
-        <p>Min Price: {tempMinPrice} - Max Price: {tempMaxPrice}</p>
-        </div>
+      <div className="container priceFilter">
+        <table style={{ margin: "auto", width: "100%", maxWidth: "600px"}}>
+          <tr>
+            <td colSpan="2">
+              <h3>Price Filter</h3>
+            </td>
+          </tr>
+          <tr>
+            <td colSpan="2">
+              <Rheostat
+                min={1}
+                max={1000}
+                values={[minPrice, maxPrice]}
+                onChange={handleChange}
+                onValuesUpdated={handleValuesUpdated}
+                onSliderDragMove={() => setIsDragging(true)}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                style={{ textAlign: "center" }}
+                type="text"
+                value={minPrice}
+                onChange={(e) => setMinPrice(e.target.value)}
+              />
+            </td>
+            <td>
+              <input
+                style={{ textAlign: "center" }}
+                type="text"
+                value={maxPrice}
+                onChange={(e) => setMaxPrice(e.target.value)}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td> Min Price ${tempMinPrice}</td>
+            <td>Max Price ${tempMaxPrice}</td>
+          </tr>
+        </table>
+      </div>
       <section className="container">
         <h1 style={{ padding: "10px", paddingTop: "30px" }}>
           Experiences List
         </h1>
-
-        <Container>
-          <Row md="3" lg="4" sm="2" xs="1">
-            {experiences.map((e) => (
-              <Experience {...e} />
-            ))}
-          </Row>
-        </Container>
-        <PaginationLink disabled={pageNum === 1} handleClick={goPrevPage}>
-          Previous Page</PaginationLink>
-        <PaginationLink disabled={pageNum === maxPageNum} handleClick={goNextPage}>
-          Next Page
-        </PaginationLink>
+        <section className="container">
+          <Container className="transition" style={{ opacity: isDragging? "0.5" : "1", width: "100%", margin: "auto" }}>
+            <Row md="3" lg="4" sm="2" xs="1">
+              {experiences.map((e) => (
+                <Experience {...e} />
+              ))}
+            </Row>
+          </Container>
+        </section>
+        <section style={{ marginBottom: "50px", marginTop: "50px" }}>
+          <table style={{ width: "100%" }}>
+            <tr>
+              <td style={{ textAlign: "center", width: "300px" }}>
+                <PaginationLink
+                  disabled={pageNum === 1}
+                  handleClick={goPrevPage}
+                >
+                  Previous Page
+                </PaginationLink>
+              </td>
+              <td style={{ textAlign: "center", width: "300px" }}>
+                <PaginationLink
+                  disabled={pageNum === maxPageNum}
+                  handleClick={goNextPage}
+                >
+                  Next Page
+                </PaginationLink>
+              </td>
+            </tr>
+          </table>
+        </section>
       </section>
     </div>
   );
@@ -133,7 +193,6 @@ const Experience = ({ title, pictureUrl, country, duration, price, _id }) => (
         <Card.Title>{title}</Card.Title>
         <Card.Text>
           <section>
-            {/* <p>{description}</p> */}
             <p className="cardText">
               <i
                 class="fas fa-globe"

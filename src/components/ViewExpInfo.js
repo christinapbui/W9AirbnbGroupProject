@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams,Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Navbar, Container, Row, Col, Badge, Button } from "react-bootstrap";
 
 // this is to view an experience in detail
@@ -44,6 +44,7 @@ const ViewExpInfo = () => {
 };
 
 const Experience = ({
+  _id,
   title,
   pictureUrl,
   country,
@@ -58,30 +59,43 @@ const Experience = ({
   tags
 }) => (
   <div>
-    <section style={{ backgroundColor: "black", color: "white" }}>
+    <section
+      style={{
+        backgroundColor: "black",
+        color: "white",
+        paddingBottom: "30px",
+      }}
+    >
       <div className="container infoPage">
         <Container>
-          <Row sm="2" xs="1">
-            <Col md={4}>
+          <Row xl="2" lg="2" md="1" sm="1" xs="1">
+            <Col xl={4}>
               <img
                 src={pictureUrl}
-                style={{ height: "18rem", objectFit: "cover" }}
+                style={{
+                  height: "18rem",
+                  maxWidth: "18rem",
+                  objectFit: "cover",
+                  objectPosition: "50 50",
+                }}
               />
             </Col>
-            <Col md={8}>
-              <h4>Host: {host}</h4>
-              <h4>What you'll do</h4>
-              <p>Description: {description}</p>
+            <Col xl={8}>
+              <h4 style={{ paddingBottom: "10px" }}>Host: {host}</h4>
+              <h5>What you'll do</h5>
+              <p>{description}</p>
             </Col>
           </Row>
           <Row sm="2" xs="1" style={{ marginTop: "20px" }}>
             <Col md={4}>
               <div className="justify-content-center">
-                <Badge variant="light">&#9658; Online Experience</Badge>
-                <h2>{title}</h2>
+                <Badge variant="light" style={{ marginBottom: "10px" }}>
+                  &#9658; Online Experience
+                </Badge>
+                <h4>{title}</h4>
                 <p style={{ color: "#777777" }}>
-                  <i class="fas fa-globe" style={{ paddingRight: "15px" }}></i>
-                  {city},{country}
+                  <i class="fas fa-globe" style={{ paddingRight: "10px" }}></i>
+                  {city}, {country}
                 </p>
                 <Badge variant="light">Starting from ${price} USD</Badge>
                 {tags && tags.map(e=> <Badge variant="sucess"><Link to={`/?tag=${e._id}`}>{e.tag}</Link> </Badge>)}
@@ -96,15 +110,18 @@ const Experience = ({
                 Book and join this experience from your computer, phone, or
                 tablet.
               </p>
-              <table className="infoTable" style={{ width: "100%" }}>
+              <table
+                className="infoTable"
+                style={{ width: "100%", tableLayout: "fixed" }}
+              >
                 <tr style={{ color: "#777777" }}>
-                  <td>
+                  <td style={{ width: "33%" }}>
                     <i class="far fa-clock"></i>
                   </td>
-                  <td>
+                  <td style={{ width: "33%" }}>
                     <i class="fas fa-user-friends"></i>
                   </td>
-                  <td>
+                  <td style={{ width: "33%" }}>
                     <i class="far fa-comment"></i>
                   </td>
                 </tr>
@@ -114,7 +131,7 @@ const Experience = ({
                   <td>Hosted Language:</td>
                 </tr>
                 <tr>
-                  <td>{duration} minutes</td>
+                  <td>{duration}/hr</td>
                   <td>{maxGroupSize}</td>
                   <td>{language}</td>
                 </tr>
@@ -124,11 +141,11 @@ const Experience = ({
         </Container>
       </div>
     </section>
-    <section className="container">
-      <Container style={{ marginTop: "30px" }}>
+    <section className="container whatToBring">
+      <Container style={{ marginTop: "30px", marginBottom: "30px" }}>
         <Row sm="2" xs="1">
           <Col md={4}>
-            <h4>What to bring: {whatToBring}</h4>
+            <h4>What to bring:</h4>
           </Col>
           <Col md={8}>{whatToBring}</Col>
         </Row>

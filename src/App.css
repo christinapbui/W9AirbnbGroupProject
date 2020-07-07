@@ -2,6 +2,10 @@
   background-color: white;
 }
 
+body{
+  color: #333333;
+}
+
 .add{
   background-color:white;
   height: 100vh;
@@ -49,6 +53,7 @@ p .cardText{
 
 .card{
   border: none;
+  margin: auto;
 }
 
 div .card-body{
@@ -79,4 +84,59 @@ div .card-body{
 
 .infoTable{
   text-align: center;
+}
+
+.priceFilter td{
+  text-align: center;
+}
+
+.priceFilter input{
+  border-radius: 10px;
+  border: solid #eeeeee 2px;
+  padding: 5px;
+  margin: 10px;
+  width: 100px;
+}
+
+.priceFilter h3 {
+  margin: 10px;
+}
+
+.DefaultProgressBar_progressBar{
+  background-color: rgb(255, 137, 141)!important;
+}
+.DefaultProgressBar_background__horizontal{
+  height: 5px!important;
+  top: 3px!important;
+}
+
+.DefaultBackground{
+  border: none!important;
+}
+
+.handleContainer{
+  background-color:#fafafa;
+  border-radius: 8px;
+  border: #f1f1f1 solid 1px;
+  padding: 2px;
+}
+
+.DefaultHandle_handle__horizontal{
+  top: -7px!important;
+}
+
+.DefaultHandle_handle{
+  border-radius: 50%!important;
+}
+
+.transition{
+  transition-duration: .3s;
+}
+
+.addExp{
+  padding-bottom: 50px;
+}
+
+.whatToBring{
+  padding-bottom: 50px;
 }
