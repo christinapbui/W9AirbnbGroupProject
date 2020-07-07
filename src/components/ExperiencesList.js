@@ -86,7 +86,7 @@ const ExperiencesList = () => {
         <Container style={{ marginTop: "10rem" }}>
           <div style={{ textShadow: "1px 1px 1px rgba(0, 0, 0, 0.5)" }}>
             <h1>Online Experiences</h1>
-            <p style={{ width: "30rem" }}>
+            <p style={{ maxWidth: "30rem" }}>
               Unique activities to do from home, including cooking experiences
               with world-renowned chefs
             </p>
@@ -109,7 +109,6 @@ const ExperiencesList = () => {
                 onChange={handleChange}
                 onValuesUpdated={handleValuesUpdated}
                 onSliderDragMove={() => setIsDragging(true)}
-
               />
             </td>
           </tr>
@@ -127,7 +126,7 @@ const ExperiencesList = () => {
                 style={{ textAlign: "center" }}
                 type="text"
                 value={maxPrice}
-                onChange={(e) => setMinPrice(e.target.value)}
+                onChange={(e) => setMaxPrice(e.target.value)}
               />
             </td>
           </tr>
@@ -136,7 +135,6 @@ const ExperiencesList = () => {
             <td>Max Price ${tempMaxPrice}</td>
           </tr>
         </table>
-        <p></p>
       </div>
       <section className="container">
         <h1 style={{ padding: "10px", paddingTop: "30px" }}>
