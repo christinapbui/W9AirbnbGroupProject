@@ -57,7 +57,7 @@ const AddExperience = () => {
   };
 
   return (
-    <div>
+    <div className="addExp">
       <Navbar bg="white" variant="light" className="navbar">
         <div className="container">
           <Navbar.Brand href="/">
