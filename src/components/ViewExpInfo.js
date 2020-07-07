@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Navbar, Container, Row, Col, Badge, Button } from "react-bootstrap";
 
 // this is to view an experience in detail
@@ -10,6 +10,7 @@ const ViewExpInfo = () => {
     async function fetchData() {
       const data = await fetch("http://localhost:5000/experiences/" + eid);
       const expInfo = await data.json();
+      console.log("loggggg:", expInfo);
       setExpInfo(expInfo);
     }
     fetchData();
@@ -37,6 +38,7 @@ const ViewExpInfo = () => {
 };
 
 const Experience = ({
+  _id,
   title,
   pictureUrl,
   country,
