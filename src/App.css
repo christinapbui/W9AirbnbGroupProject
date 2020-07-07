@@ -85,15 +85,6 @@ div .card-body{
   text-align: center;
 }
 
-.pagination a{
-  text-align: center;
-  color: black;
-  display: inline;
-  font-size: 20px;
-  padding: 20px;
-}
-
-
 .priceFilter td{
   text-align: center;
 }
