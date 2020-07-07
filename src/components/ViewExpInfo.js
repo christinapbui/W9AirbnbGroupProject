@@ -52,21 +52,29 @@ const Experience = ({
   whatToBring,
 }) => (
   <div>
-    <section style={{ backgroundColor: "black", color: "white", paddingBottom: "30px" }}>
+    <section
+      style={{
+        backgroundColor: "black",
+        color: "white",
+        paddingBottom: "30px",
+      }}
+    >
       <div className="container infoPage">
         <Container>
           <Row xl="2" lg="2" md="1" sm="1" xs="1">
             <Col xl={4}>
               <img
                 src={pictureUrl}
-                style={{ height: "18rem", maxWidth: "18rem", objectFit: "cover", objectPosition: "50 50" }}
+                style={{
+                  height: "18rem",
+                  maxWidth: "18rem",
+                  objectFit: "cover",
+                  objectPosition: "50 50",
+                }}
               />
             </Col>
-            <Col md={8}>
-              <Button variant="danger">
-                <Link to={`/${_id}/edit`}>Edit this experience</Link>
-              </Button>
-              <h4>Host: {host}</h4>
+            <Col xl={8}>
+              <h4 style={{ paddingBottom: "10px" }}>Host: {host}</h4>
               <h5>What you'll do</h5>
               <p>{description}</p>
             </Col>
@@ -74,8 +82,10 @@ const Experience = ({
           <Row sm="2" xs="1" style={{ marginTop: "20px" }}>
             <Col md={4}>
               <div className="justify-content-center">
-                <Badge variant="light">&#9658; Online Experience</Badge>
-                <h2>{title}</h2>
+                <Badge variant="light" style={{ marginBottom: "10px" }}>
+                  &#9658; Online Experience
+                </Badge>
+                <h4>{title}</h4>
                 <p style={{ color: "#777777" }}>
                   <i class="fas fa-globe" style={{ paddingRight: "10px" }}></i>
                   {city}, {country}
@@ -92,15 +102,18 @@ const Experience = ({
                 Book and join this experience from your computer, phone, or
                 tablet.
               </p>
-              <table className="infoTable" style={{ width: "100%" }}>
+              <table
+                className="infoTable"
+                style={{ width: "100%", tableLayout: "fixed" }}
+              >
                 <tr style={{ color: "#777777" }}>
-                  <td>
+                  <td style={{ width: "33%" }}>
                     <i class="far fa-clock"></i>
                   </td>
-                  <td>
+                  <td style={{ width: "33%" }}>
                     <i class="fas fa-user-friends"></i>
                   </td>
-                  <td>
+                  <td style={{ width: "33%" }}>
                     <i class="far fa-comment"></i>
                   </td>
                 </tr>
@@ -121,7 +134,7 @@ const Experience = ({
       </div>
     </section>
     <section className="container whatToBring">
-      <Container style={{ marginTop: "30px", marginBottom: "30px"}}>
+      <Container style={{ marginTop: "30px", marginBottom: "30px" }}>
         <Row sm="2" xs="1">
           <Col md={4}>
             <h4>What to bring:</h4>
