@@ -48,6 +48,7 @@ const ExperiencesList = () => {
   const handleChange = (e) => {
     setMinPrice(e.values[0]);
     setMaxPrice(e.values[1]);
+    setPageNum(1);
   };
 
   const handleValuesUpdated = (e) => {
@@ -123,12 +124,12 @@ const ExperiencesList = () => {
                 style={{ textAlign: "center" }}
                 type="text"
                 value={maxPrice}
-                onChange={(e) => setMinPrice(e.target.value)}
+                onChange={(e) => setMaxPrice(e.target.value)}
               />
             </td>
           </tr>
           <tr>
-            <td> Min Price ${tempMinPrice}</td>
+            <td>Min Price ${tempMinPrice}</td>
             <td>Max Price ${tempMaxPrice}</td>
           </tr>
         </table>
@@ -147,15 +148,27 @@ const ExperiencesList = () => {
             </Row>
           </Container>
         </section>
-        <section className="d-flex justify-content-center pagination">
-          <PaginationLink disabled={pageNum === 1} handleClick={goPrevPage}>
-            Previous Page
-          </PaginationLink>
-          <PaginationLink
-            disabled={pageNum === maxPageNum}
-            handleClick={goNextPage}
-          ></PaginationLink>
-          Next Page
+        <section style={{ marginBottom: "50px", marginTop: "50px" }}>
+          <table style={{ width: "100%" }}>
+            <tr>
+              <td style={{ textAlign: "center", width: "300px" }}>
+                <PaginationLink
+                  disabled={pageNum === 1}
+                  handleClick={goPrevPage}
+                >
+                  Previous Page
+                </PaginationLink>
+              </td>
+              <td style={{ textAlign: "center", width: "300px" }}>
+                <PaginationLink
+                  disabled={pageNum === maxPageNum}
+                  handleClick={goNextPage}
+                >
+                  Next Page
+                </PaginationLink>
+              </td>
+            </tr>
+          </table>
         </section>
       </section>
     </div>
