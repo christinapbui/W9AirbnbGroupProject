@@ -50,7 +50,7 @@ const Experience = ({
   whatToBring,
 }) => (
   <div>
-    <section style={{ backgroundColor: "black", color: "white" }}>
+    <section style={{ backgroundColor: "black", color: "white", paddingBottom: "30px" }}>
       <div className="container infoPage">
         <Container>
           <Row xl="2" lg="2" md="1" sm="1" xs="1">
@@ -115,11 +115,11 @@ const Experience = ({
         </Container>
       </div>
     </section>
-    <section className="container">
+    <section className="container whatToBring">
       <Container style={{ marginTop: "30px", marginBottom: "30px"}}>
         <Row sm="2" xs="1">
           <Col md={4}>
-            <h4>What to bring: {whatToBring}</h4>
+            <h4>What to bring:</h4>
           </Col>
           <Col md={8}>{whatToBring}</Col>
         </Row>
