@@ -32,6 +32,7 @@ const AddExperience = () => {
       whatToBring,
       tags,
     };
+    console.log("exper data:", experienceData)
     // to send this, send a POST request to API
     const newExperience = await fetch("http://localhost:5000/experiences", {
       method: "POST",
@@ -39,6 +40,7 @@ const AddExperience = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(experienceData),
+
     });
     alert("Your Event Has Been Added")
     setTitle("");

@@ -2,6 +2,10 @@
   background-color: white;
 }
 
+body{
+  color: #333333;
+}
+
 .add{
   background-color:white;
   height: 100vh;
@@ -79,4 +83,44 @@ div .card-body{
 
 .infoTable{
   text-align: center;
+}
+
+.pagination a{
+  text-align: center;
+  color: black;
+  display: inline;
+  font-size: 20px;
+  padding: 20px;
+}
+
+
+.priceFilter td{
+  text-align: center;
+}
+
+.priceFilter input{
+  border-radius: 10px;
+  border: solid #eeeeee 2px;
+  padding: 5px;
+  margin: 10px;
+  width: 100px;
+}
+
+.priceFilter h3 {
+  margin: 10px;
+}
+
+.DefaultProgressBar_progressBar{
+  background-color: rgba(255, 88, 93, .5)!important;
+}
+.DefaultProgressBar_background__horizontal{
+  height: 5px!important;
+}
+
+.DefaultBackground{
+  border: none!important;
+}
+
+.handleContainer{
+  top: -5px!important;
 }

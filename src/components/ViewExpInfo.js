@@ -55,11 +55,11 @@ const Experience = ({
     <section style={{ backgroundColor: "black", color: "white" }}>
       <div className="container infoPage">
         <Container>
-          <Row sm="2" xs="1">
-            <Col md={4}>
+          <Row xl="2" lg="2" md="1" sm="1" xs="1">
+            <Col xl={4}>
               <img
                 src={pictureUrl}
-                style={{ height: "18rem", objectFit: "cover" }}
+                style={{ height: "18rem", maxWidth: "18rem", objectFit: "cover", objectPosition: "50 50" }}
               />
             </Col>
             <Col md={8}>
@@ -67,8 +67,8 @@ const Experience = ({
                 <Link to={`/${_id}/edit`}>Edit this experience</Link>
               </Button>
               <h4>Host: {host}</h4>
-              <h4>What you'll do</h4>
-              <p>Description: {description}</p>
+              <h5>What you'll do</h5>
+              <p>{description}</p>
             </Col>
           </Row>
           <Row sm="2" xs="1" style={{ marginTop: "20px" }}>
@@ -77,8 +77,8 @@ const Experience = ({
                 <Badge variant="light">&#9658; Online Experience</Badge>
                 <h2>{title}</h2>
                 <p style={{ color: "#777777" }}>
-                  <i class="fas fa-globe" style={{ paddingRight: "15px" }}></i>
-                  {city},{country}
+                  <i class="fas fa-globe" style={{ paddingRight: "10px" }}></i>
+                  {city}, {country}
                 </p>
                 <Badge variant="light">Starting from ${price} USD</Badge>
               </div>
@@ -121,7 +121,7 @@ const Experience = ({
       </div>
     </section>
     <section className="container">
-      <Container style={{ marginTop: "30px" }}>
+      <Container style={{ marginTop: "30px", marginBottom: "30px"}}>
         <Row sm="2" xs="1">
           <Col md={4}>
             <h4>What to bring: {whatToBring}</h4>
