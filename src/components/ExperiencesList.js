@@ -12,25 +12,31 @@ import {
   Jumbotron,
 } from "react-bootstrap";
 import PaginationLink from "./PaginationLink"
+import Rheostat from "rheostat"
 
 const ExperiencesList = () => {
   const [experiences, setExperiences] = useState([]);
   const [pageNum, setPageNum] = useState(1);
   const [maxPageNum, setMaxPageNum] = useState(1)
   const { eid } = useParams();
+  const [minPrice, setMinPrice] = useState(1)
+  const [maxPrice, setMaxPrice] = useState(1000)
+  const [tempMinPrice, setTempMinPrice] = useState(1)
+  const [tempMaxPrice, setTempMaxPrice] = useState(1000)
+  // const [isDragging, setIsDragging] = useState(false) // this will be boolean
 
   useEffect(() => {
     async function fetchData() {
       const data = await fetch(
-        `http://localhost:3000/experiences?page=${pageNum}`
+        `http://localhost:5000/experiences?page=${pageNum}&minPrice=${minPrice}&maxPrice=${maxPrice}`
       );
       const resp = await data.json();
       setExperiences(resp.data);
       setMaxPageNum(parseInt(resp.maxPageNum))
     }
     fetchData();
-  }, [pageNum]); // the empty array [] makes it run only once (otherwise it will continue to GET on backend)
-
+  }, [pageNum, minPrice, maxPrice]); // the empty array [] makes it run only once (otherwise it will continue to GET on backend)
+  console.log(window.location.search)
   const goNextPage = () => {
     setPageNum(pageNum + 1);
   };
@@ -38,6 +44,16 @@ const ExperiencesList = () => {
   const goPrevPage = () => {
     setPageNum(pageNum - 1);
   };
+
+  const handleChange = (e) => {
+    setMinPrice(e.values[0])
+    setMaxPrice(e.values[1])
+  }
+
+  const handleValuesUpdated = (e) => {
+    setTempMinPrice(e.values[0])
+    setTempMaxPrice(e.values[1])
+  }
 
   return (
     <div>
@@ -73,6 +89,11 @@ const ExperiencesList = () => {
           </p>
         </Container>
       </Jumbotron>
+      <div>
+        <Rheostat min={1} max={1000} value={[minPrice, maxPrice]} onChange={handleChange} onValuesUpdated={handleValuesUpdated} />
+        <input type="text" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} />
+        <p>Min Price: {tempMinPrice} - Max Price: {tempMaxPrice}</p>
+        </div>
       <section className="container">
         <h1 style={{ padding: "10px", paddingTop: "30px" }}>
           Experiences List

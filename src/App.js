@@ -7,6 +7,9 @@ import AddExperience from "./components/AddExperience";
 import ViewExpInfo from "./components/ViewExpInfo";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import 'rheostat/initialize';
+import 'rheostat/css/rheostat.css'
+
 
 function App() {
   const [experiences,setExperiences] = useState(null)

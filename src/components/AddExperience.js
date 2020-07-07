@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Form, Navbar, Button } from "react-bootstrap";
 
+
+
+
 const AddExperience = () => {
   const [title, setTitle] = useState("");
   const [country, setCountry] = useState("");
@@ -52,6 +55,7 @@ const AddExperience = () => {
     setDescription("");
     setHost("");
     setWhatToBring("");
+    setTags("")
   };
 
   return (
