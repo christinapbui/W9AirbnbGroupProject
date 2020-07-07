@@ -2,6 +2,7 @@ import React from "react";
 import ExperiencesList from "./components/ExperiencesList";
 import AddExperience from "./components/AddExperience";
 import ViewExpInfo from "./components/ViewExpInfo";
+import EditExpInfo from "./components/EditExpInfo";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import 'rheostat/initialize';
@@ -18,9 +19,14 @@ function App() {
           </div>
         </Route>
 
+        <Route path="/experience/:eid/edit">
+          <EditExpInfo />
+        </Route>
+
         <Route path="/experience/:eid">
           <ViewExpInfo />
         </Route>
+        
         <Route path="/" exact>
           <div className="experience">
             <ExperiencesList />
