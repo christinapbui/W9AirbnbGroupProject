@@ -111,10 +111,11 @@ div .card-body{
 }
 
 .DefaultProgressBar_progressBar{
-  background-color: rgba(255, 88, 93, .5)!important;
+  background-color: rgb(255, 137, 141)!important;
 }
 .DefaultProgressBar_background__horizontal{
   height: 5px!important;
+  top: 3px!important;
 }
 
 .DefaultBackground{
@@ -122,5 +123,16 @@ div .card-body{
 }
 
 .handleContainer{
-  top: -5px!important;
+  background-color:#fafafa;
+  border-radius: 8px;
+  border: #f1f1f1 solid 1px;
+  padding: 2px;
+}
+
+.DefaultHandle_handle__horizontal{
+  top: -7px!important;
+}
+
+.DefaultHandle_handle{
+  border-radius: 50%!important;
 }
