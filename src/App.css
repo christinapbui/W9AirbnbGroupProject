@@ -53,6 +53,7 @@ p .cardText{
 
 .card{
   border: none;
+  margin: auto;
 }
 
 div .card-body{
@@ -130,4 +131,8 @@ div .card-body{
 
 .transition{
   transition-duration: .3s;
+}
+
+.addExp{
+  padding-bottom: 50px;
 }

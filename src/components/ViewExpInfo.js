@@ -105,7 +105,7 @@ const Experience = ({
                   <td>Hosted Language:</td>
                 </tr>
                 <tr>
-                  <td>{duration} minutes</td>
+                  <td>{duration}/hr</td>
                   <td>{maxGroupSize}</td>
                   <td>{language}</td>
                 </tr>
