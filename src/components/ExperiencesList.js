@@ -36,7 +36,7 @@ const ExperiencesList = () => {
     }
     fetchData();
   }, [pageNum, minPrice, maxPrice]); // the empty array [] makes it run only once (otherwise it will continue to GET on backend)
-
+  console.log(window.location.search)
   const goNextPage = () => {
     setPageNum(pageNum + 1);
   };

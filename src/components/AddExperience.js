@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Form, Navbar, Button } from "react-bootstrap";
 
+
+
+
 const AddExperience = () => {
   const [title, setTitle] = useState("");
   const [country, setCountry] = useState("");
@@ -54,6 +57,7 @@ const AddExperience = () => {
     setDescription("");
     setHost("");
     setWhatToBring("");
+    setTags("")
   };
 
   return (
@@ -133,42 +137,42 @@ const AddExperience = () => {
           />
         </Form.Group>
 
-        <Form.Group controlId="country">
-          <Form.Label>Country</Form.Label>
-          <Form.Control
-            type="text"
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
-          />
-        </Form.Group>
+      <Form.Group controlId="country">
+        <Form.Label>Country</Form.Label>
+        <Form.Control
+          type="text"
+          value={country}
+          onChange={(e) => setCountry(e.target.value)}
+        />
+      </Form.Group>
 
-        <Form.Group controlId="price">
-          <Form.Label>Price</Form.Label>
-          <Form.Control
-            type="number"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-          />
-        </Form.Group>
+      <Form.Group controlId="price">
+        <Form.Label>Price</Form.Label>
+        <Form.Control
+          type="number"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+        />
+      </Form.Group>
 
-        <Form.Group controlId="duration">
-          <Form.Label>Duration</Form.Label>
-          <Form.Control
-            type="number"
-            value={duration}
-            onChange={(e) => setDuration(e.target.value)}
-          />
-          <Form.Text className="text-muted">Enter duration in hours</Form.Text>
-        </Form.Group>
+      <Form.Group controlId="duration">
+        <Form.Label>Duration</Form.Label>
+        <Form.Control
+          type="number"
+          value={duration}
+          onChange={(e) => setDuration(e.target.value)}
+        />
+        <Form.Text className="text-muted">Enter duration in hours</Form.Text>
+      </Form.Group>
 
-        <Form.Group controlId="pictureUrl">
-          <Form.Label>Picture URL</Form.Label>
-          <Form.Control
-            type="text"
-            value={pictureUrl}
-            onChange={(e) => setPictureUrl(e.target.value)}
-          />
-        </Form.Group>
+      <Form.Group controlId="pictureUrl">
+        <Form.Label>Picture URL</Form.Label>
+        <Form.Control
+          type="text"
+          value={pictureUrl}
+          onChange={(e) => setPictureUrl(e.target.value)}
+        />
+      </Form.Group>
 
         <Form.Group controlId="maxGroupSize">
           <Form.Label>Max Group Size</Form.Label>

@@ -5,12 +5,18 @@ import { Navbar, Container, Row, Col, Badge, Button } from "react-bootstrap";
 // this is to view an experience in detail
 const ViewExpInfo = () => {
   const [expInfo, setExpInfo] = useState(null);
+  // const [tags, setTags] = useState([]);
   const { eid } = useParams();
   useEffect(() => {
     async function fetchData() {
       const data = await fetch("http://localhost:5000/experiences/" + eid);
+      // console.log(data)
+      // data.tags = await data.tags.map(tag => tag.tag+' ')
       const expInfo = await data.json();
-      console.log("loggggg:", expInfo);
+      // expInfo.tags = expInfo.tags.map(tag => `<a href="#" >${tag.tag}</a>`)
+      console.log(expInfo)
+      //setTags(expInfo.tags)
+      //expInfo.tags = '';
       setExpInfo(expInfo);
     }
     fetchData();
@@ -50,6 +56,7 @@ const Experience = ({
   description,
   host,
   whatToBring,
+  tags
 }) => (
   <div>
     <section
@@ -91,6 +98,7 @@ const Experience = ({
                   {city}, {country}
                 </p>
                 <Badge variant="light">Starting from ${price} USD</Badge>
+                {tags && tags.map(e=> <Badge variant="sucess"><Link to={`/?tag=${e._id}`}>{e.tag}</Link> </Badge>)}
               </div>
             </Col>
             <Col md={8}>
