@@ -3,8 +3,9 @@ import { useParams, Link } from "react-router-dom";
 import { Navbar, Container, Row, Col, Badge, Button } from "react-bootstrap";
 
 // this is to view an experience in detail
-const ViewExpInfo = () => {
+const ViewExpInfo = ({ text, type, placeholder, children, ...props }) => {
   const [expInfo, setExpInfo] = useState(null);
+  const [editing, setEditing] = useState(false)
   const { eid } = useParams();
   useEffect(() => {
     async function fetchData() {
@@ -15,8 +16,35 @@ const ViewExpInfo = () => {
     }
     fetchData();
   }, []); // the empty array makes it run only once (otherwise it will continue to GET on backend)
+  
+  const handleKeyDown = (event, type) => {
+    // Handle when key is pressed
+  };
+  
   console.log(expInfo);
   return (
+    <section {...props}>
+      {isEditing ? (
+        <div
+          onBlur={() => setEditing(false)}
+          onKeyDown={e => handleKeyDown(e, type)}
+        >
+          {children}
+        </div>
+      ) : (
+        <div
+          onClick={() => setEditing(true)}
+        >
+          <span>
+            {text || placeholder || "Editable content"}
+          </span>
+        </div>
+      )}
+    </section>
+
+
+
+    // FROM VIEWEXPINFO
     <section>
       <Navbar bg="dark" variant="dark" className="navbarInfo">
         <div className="container">
@@ -59,12 +87,17 @@ const Experience = ({
             <Col xl={4}>
               <img
                 src={pictureUrl}
-                style={{ height: "18rem", maxWidth: "18rem", objectFit: "cover", objectPosition: "50 50" }}
+                style={{
+                  height: "18rem",
+                  maxWidth: "18rem",
+                  objectFit: "cover",
+                  objectPosition: "50 50",
+                }}
               />
             </Col>
             <Col md={8}>
               <Button variant="danger">
-                <Link to={`/${_id}/edit`}>Edit this experience</Link>
+                <Link to={`/experience/${_id}/edit`} className="editexp-link">Edit this experience</Link>
               </Button>
               <h4>Host: {host}</h4>
               <h5>What you'll do</h5>
@@ -121,7 +154,7 @@ const Experience = ({
       </div>
     </section>
     <section className="container">
-      <Container style={{ marginTop: "30px", marginBottom: "30px"}}>
+      <Container style={{ marginTop: "30px", marginBottom: "30px" }}>
         <Row sm="2" xs="1">
           <Col md={4}>
             <h4>What to bring: {whatToBring}</h4>

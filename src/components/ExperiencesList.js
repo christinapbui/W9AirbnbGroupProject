@@ -86,7 +86,7 @@ const ExperiencesList = () => {
         <Container style={{ marginTop: "10rem" }}>
           <div style={{ textShadow: "1px 1px 1px rgba(0, 0, 0, 0.5)" }}>
             <h1>Online Experiences</h1>
-            <p style={{ width: "30rem" }}>
+            <p style={{ maxWidth: "30rem" }}>
               Unique activities to do from home, including cooking experiences
               with world-renowned chefs
             </p>
@@ -127,12 +127,12 @@ const ExperiencesList = () => {
                 style={{ textAlign: "center" }}
                 type="text"
                 value={maxPrice}
-                onChange={(e) => setMinPrice(e.target.value)}
+                onChange={(e) => setMaxPrice(e.target.value)}
               />
             </td>
           </tr>
           <tr>
-            <td> Min Price ${tempMinPrice}</td>
+            <td>Min Price ${tempMinPrice}</td>
             <td>Max Price ${tempMaxPrice}</td>
           </tr>
         </table>
