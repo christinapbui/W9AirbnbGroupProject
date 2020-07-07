@@ -23,7 +23,7 @@ const ExperiencesList = () => {
   const [maxPrice, setMaxPrice] = useState(1000);
   const [tempMinPrice, setTempMinPrice] = useState(1);
   const [tempMaxPrice, setTempMaxPrice] = useState(1000);
-  // const [isDragging, setIsDragging] = useState(false) // this will be boolean
+  const [isDragging, setIsDragging] = useState(false) // this will be boolean
 
   useEffect(() => {
     async function fetchData() {
@@ -49,6 +49,7 @@ const ExperiencesList = () => {
     setMinPrice(e.values[0]);
     setMaxPrice(e.values[1]);
     setPageNum(1);
+    setIsDragging(false)
   };
 
   const handleValuesUpdated = (e) => {
@@ -85,7 +86,7 @@ const ExperiencesList = () => {
         <Container style={{ marginTop: "10rem" }}>
           <div style={{ textShadow: "1px 1px 1px rgba(0, 0, 0, 0.5)" }}>
             <h1>Online Experiences</h1>
-            <p style={{ width: "30rem" }}>
+            <p style={{ maxWidth: "30rem" }}>
               Unique activities to do from home, including cooking experiences
               with world-renowned chefs
             </p>
@@ -107,6 +108,8 @@ const ExperiencesList = () => {
                 values={[minPrice, maxPrice]}
                 onChange={handleChange}
                 onValuesUpdated={handleValuesUpdated}
+                onSliderDragMove={() => setIsDragging(true)}
+
               />
             </td>
           </tr>
@@ -140,7 +143,7 @@ const ExperiencesList = () => {
           Experiences List
         </h1>
         <section className="container">
-          <Container>
+          <Container className="transition" style={{ opacity: isDragging? "0.5" : "1", width: "100%", margin: "auto" }}>
             <Row md="3" lg="4" sm="2" xs="1">
               {experiences.map((e) => (
                 <Experience {...e} />
