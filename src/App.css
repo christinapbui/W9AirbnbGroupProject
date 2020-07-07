@@ -127,3 +127,7 @@ div .card-body{
 .DefaultHandle_handle{
   border-radius: 50%!important;
 }
+
+.transition{
+  transition-duration: .3s;
+}

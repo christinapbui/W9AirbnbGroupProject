@@ -23,7 +23,7 @@ const ExperiencesList = () => {
   const [maxPrice, setMaxPrice] = useState(1000);
   const [tempMinPrice, setTempMinPrice] = useState(1);
   const [tempMaxPrice, setTempMaxPrice] = useState(1000);
-  // const [isDragging, setIsDragging] = useState(false) // this will be boolean
+  const [isDragging, setIsDragging] = useState(false) // this will be boolean
 
   useEffect(() => {
     async function fetchData() {
@@ -48,6 +48,8 @@ const ExperiencesList = () => {
   const handleChange = (e) => {
     setMinPrice(e.values[0]);
     setMaxPrice(e.values[1]);
+    setPageNum(1);
+    setIsDragging(false)
   };
 
   const handleValuesUpdated = (e) => {
@@ -106,6 +108,8 @@ const ExperiencesList = () => {
                 values={[minPrice, maxPrice]}
                 onChange={handleChange}
                 onValuesUpdated={handleValuesUpdated}
+                onSliderDragMove={() => setIsDragging(true)}
+
               />
             </td>
           </tr>
@@ -139,7 +143,7 @@ const ExperiencesList = () => {
           Experiences List
         </h1>
         <section className="container">
-          <Container style={{ width: "100%", margin: "auto" }}>
+          <Container className="transition" style={{ opacity: isDragging? "0.5" : "1", width: "100%", margin: "auto" }}>
             <Row md="3" lg="4" sm="2" xs="1">
               {experiences.map((e) => (
                 <Experience {...e} />
@@ -150,7 +154,7 @@ const ExperiencesList = () => {
         <section style={{ marginBottom: "50px", marginTop: "50px" }}>
           <table style={{ width: "100%" }}>
             <tr>
-              <td style={{ textAlign: "center", width: "300px"}}>
+              <td style={{ textAlign: "center", width: "300px" }}>
                 <PaginationLink
                   disabled={pageNum === 1}
                   handleClick={goPrevPage}
